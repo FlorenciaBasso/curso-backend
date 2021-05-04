@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function Usuario (nombre, apellido, libros, mascotas) {
+        this.nombre = nombre
+        this.apellido = apellido
+        this.libros = libros
+        this.mascotas = mascotas
+    }
+
+    Usuario.prototype.getFullName = function(){
+        console.log(this.nombre, this.apellido);
+    }
+
+    Usuario.prototype.addMascota = function (mascota) {
+        this.mascotas.push('perro');
+    }
+
+    Usuario.prototype.getMascotas = function(){
+        return this.mascotas.length
+    }
+
+    Usuario.prototype.addBook = function(book, autor){
+        this.libros.push({ nombre: book, autor: autor} )
+    }
+
+    Usuario.prototype.getBook = function(){
+        let nombres=[];
+        for (let i = 0; i < this.libros.length; i++){
+            let nombre = this.libros[i].nombre;
+            nombres.push(nombre);
+        }
+
+        return nombres;
+    }
+
+    let usuario = new Usuario('Mercedes', 'Garay', [], ['gato', 'loro', 'pez']);
+
+    usuario.addBook('Los siete lagos','Pedro Raben');
+    usuario.addBook('El pricipito', 'Maria Sandoba');
+
+    // console.log(usuario.libros);
+    console.log(usuario.getFullName());
+    console.log(usuario.getMascotas());
+    console.log(usuario.getBook());
+
+</script>
+<body>
+
+    <h1>Practicas JS</h1>
+    <p>Ver la consola</p>
+    
+</body>
+</html>
